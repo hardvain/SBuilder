@@ -1,6 +1,6 @@
 package io.aravindh.sbuilder
 
-import shapeless.{Generic, HList, HNil}
+import shapeless.{Generic, HList, HNil, Lazy}
 
 trait Builder[A] {
   def build: A
@@ -27,9 +27,9 @@ object SBuilder{
       override def build = hBuilder.build :: tBuilder.build
     }
 
-  implicit def genericBuilder[A, Repr <: HList](implicit gen: Generic.Aux[A, Repr], builder: Builder[Repr]): Builder[A] = {
+  implicit def genericBuilder[A, Repr <: HList](implicit gen: Lazy[Generic.Aux[A, Repr]], builder: Lazy[Builder[Repr]]): Builder[A] = {
     new Builder[A] {
-      override def build = gen.from(builder.build)
+      override def build = gen.value.from(builder.value.build)
     }
   }
 }
