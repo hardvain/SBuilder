@@ -6,7 +6,7 @@ trait Builder[A] {
   def build: A
 }
 
-object Builder{
+object SBuilder{
   def apply[A](implicit builder: Builder[A]) = builder
 
   def createBuilder[A](a: A) = new Builder[A] {
@@ -14,9 +14,9 @@ object Builder{
   }
 
   implicit val stringBuilder: Builder[String] = createBuilder("string")
-  implicit val intBuilder: Builder[Int] = createBuilder(1)
-  implicit val doubleBuilder: Builder[Double] = createBuilder(1.0)
-  implicit val booleanBuilder: Builder[Boolean] = createBuilder(true)
+  implicit val intBuilder: Builder[Int] = createBuilder(0)
+  implicit val doubleBuilder: Builder[Double] = createBuilder(3.14)
+  implicit val booleanBuilder: Builder[Boolean] = createBuilder(false)
 
   implicit val hnilBuilder: Builder[HNil] = new Builder[HNil] {
     override def build: HNil = HNil

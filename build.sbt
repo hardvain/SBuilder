@@ -12,4 +12,7 @@ lazy val root = (project in file(".")).
     libraryDependencies += scalaTest % Test
   )
 
-libraryDependencies += "com.chuusai" % "shapeless_2.12" % "2.3.2"
+libraryDependencies ++= Seq(
+  "com.chuusai" % "shapeless_2.12" % "2.3.2",
+  "org.scalatest" % "scalatest_2.12" % "3.0.1"
+)
