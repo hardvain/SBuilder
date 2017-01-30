@@ -27,7 +27,9 @@ class SBuilderSpec extends FreeSpec with Matchers {
       "should create a default dummy value for a complex case class by using dummy value for its primitives" in {
         val person = Person("", 0, 0.0, false)
         assert(SBuilder[Family].build === Family(person, person, person, person))
+        assert(SBuilder[Seq[Person]].build === Seq[Person](person))
       }
     }
   }
 }
+

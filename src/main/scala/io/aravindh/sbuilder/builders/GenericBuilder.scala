@@ -1,5 +1,6 @@
-package io.aravindh.sbuilder
+package io.aravindh.sbuilder.builders
 
+import io.aravindh.sbuilder.SBuilder
 import shapeless.{Generic, HList, Lazy}
 
 trait GenericBuilder {

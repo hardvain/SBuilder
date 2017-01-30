@@ -1,7 +1,8 @@
-package io.aravindh.sbuilder
+package io.aravindh.sbuilder.builders
 
+import io.aravindh.sbuilder.SBuilder
+import io.aravindh.sbuilder.SBuilder.createSBuilder
 import shapeless.{HList, HNil}
-import SBuilder._
 
 trait HListBuilder {
   implicit val hnilBuilder: SBuilder[HNil] = createSBuilder[HNil](HNil)
